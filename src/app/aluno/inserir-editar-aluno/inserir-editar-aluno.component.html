@@ -1,1 +1,64 @@
-<p>inserir-editar-aluno works!</p>
+<h1>{{ isEdit ? "Editar" : "Novo" }} Aluno</h1>
+<div class="well">
+  <form #formAluno="ngForm">
+    <div class="form-group">
+      <label for="nome">Nome:</label>
+      <input
+        type="text"
+        class="form-control"
+        id="nome"
+        name="nome"
+        minlength="2"
+        required
+        [(ngModel)]="aluno.nome"
+        #nome="ngModel"
+      />
+      <div
+        class="alert alert-danger"
+        *ngIf="nome.errors && (nome.dirty || nome.touched)"
+      >
+        <div [hidden]="!nome.errors['required']">Digite o nome da aluno.</div>
+        <div [hidden]="!nome.errors['minlength']">
+          O nome da aluno deve conter ao menos 2 caracteres.
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="nome">CPF:</label>
+      <input
+        type="text"
+        class="form-control"
+        id="cpf"
+        name="cpf"
+        minlength="2"
+        required
+        [(ngModel)]="aluno.cpf"
+        #cpf="ngModel"
+      />
+      <div
+        class="alert alert-danger"
+        *ngIf="cpf.errors && (cpf.dirty || cpf.touched)"
+      >
+        <div [hidden]="!cpf.errors['required']">Digite o nome do cpf.</div>
+        <div [hidden]="!cpf.errors['minlength']">
+          O nome do cpf deve conter ao menos 2 caracteres.
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <button
+        type="button"
+        class="btn btn-primary"
+        (click)="handleClik()"
+        [disabled]="!formAluno.form.valid"
+      >
+        <i class="fa fa-save" aria-hidden="true"></i>
+        {{ isEdit ? "Atualizar" : "Salvar" }}
+      </button>
+      <a [routerLink]="['/alunos']" class="btn btn-secondary">
+        <i class="fa fa-arrow-left" aria-hidden="true"></i> Voltar
+      </a>
+    </div>
+  </form>
+</div>
