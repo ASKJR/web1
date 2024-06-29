@@ -1,4 +1,4 @@
-<h1>{{ isEdit ? "Editar" : "Novo" }} Aluno</h1>
+<h1>{{ isEdit ? "Editar" : isViewMode ? "Visualizar" : "Novo" }} Aluno</h1>
 <div class="well">
   <form #formAluno="ngForm">
     <div class="form-group">
@@ -10,6 +10,7 @@
         name="nome"
         minlength="2"
         required
+        [disabled]="isViewMode"
         [(ngModel)]="aluno.nome"
         #nome="ngModel"
       />
@@ -33,6 +34,7 @@
         minlength="2"
         required
         [(ngModel)]="aluno.cpf"
+        [disabled]="isViewMode"
         #cpf="ngModel"
       />
       <div
@@ -48,6 +50,7 @@
 
     <div class="form-group">
       <button
+        *ngIf="!isViewMode"
         type="button"
         class="btn btn-primary"
         (click)="handleClik()"

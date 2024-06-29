@@ -13,6 +13,7 @@ export class InserirEditarAlunoComponent {
   @ViewChild('formAluno') formAluno!: NgForm;
   aluno: Aluno = new Aluno();
   isEdit: boolean = false;
+  isViewMode: boolean = false;
 
   constructor(
     private alunoService: AlunoService,
@@ -21,8 +22,13 @@ export class InserirEditarAlunoComponent {
   ) {}
   ngOnInit(): void {
     const idParam = this.activatedRoute.snapshot.params['id'];
+    console.log(this.router.url);
     if (idParam) {
-      this.isEdit = true;
+      if (this.router.url.includes('visualizar')) {
+        this.isViewMode = true;
+      } else {
+        this.isEdit = true;
+      }
       const fetchedAluno = this.alunoService.buscarPorId(+idParam);
 
       if (fetchedAluno !== undefined) {
@@ -32,6 +38,7 @@ export class InserirEditarAlunoComponent {
       }
     } else {
       this.isEdit = false;
+      this.isViewMode = false;
     }
   }
   handleClik(): void {

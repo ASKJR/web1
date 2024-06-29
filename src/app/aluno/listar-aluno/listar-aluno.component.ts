@@ -16,6 +16,17 @@ export class ListarAlunoComponent {
   listarTodos(): Aluno[] {
     return this.alunoService.listarTodos();
   }
+  filtrarAlunos(event: Event): void {
+    const input = event.target as HTMLInputElement;
+    const filtroParaNome = input.value;
+    if (filtroParaNome === '') {
+      this.alunos = this.listarTodos();
+    } else {
+      this.alunos = this.listarTodos().filter((aluno) =>
+        aluno.nome?.toLocaleLowerCase()?.includes(filtroParaNome.toLowerCase())
+      );
+    }
+  }
   removerAluno($event: any, aluno: Aluno) {
     $event.preventDefault();
     if (confirm(`Deseja realmente remover a aluno ${aluno.nome}?`)) {
