@@ -1,7 +1,7 @@
 <h1>Cursos</h1>
 <hr />
 
-<p *ngIf="cursos.length === 0">Nenhuma curso cadastrado.</p>
+<p *ngIf="cursos.length === 0">Nenhum curso cadastrado.</p>
 <div class="d-flex bd-highlight mb-3">
   <div class="me-auto p-2 bd-highlight">
     <a
@@ -33,7 +33,9 @@
     </tr>
     <tr *ngFor="let curso of cursos">
       <td>{{ curso.nome }}</td>
-      <td>{{ curso.link }}</td>
+      <td>
+        <a href="{{ curso.link }}">{{ curso.link }}</a>
+      </td>
       <td style="width: 350px">
         <div class="row gx-2 gy-2">
           <div class="col-auto">
