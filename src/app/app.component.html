@@ -2,8 +2,14 @@
   <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true"
     >WEB1</a
   >
-  <a class="nav-link active" aria-current="page" href="#">Aluno</a>
-  <a class="nav-link" href="#">Curso</a>
+  <a
+    class="nav-link active"
+    aria-current="page"
+    href="#"
+    [routerLink]="['/alunos']"
+    >Aluno</a
+  >
+  <a class="nav-link" href="#" [routerLink]="['/cursos']">Curso</a>
 </nav>
 <div class="container content">
   <div class="container-lg">

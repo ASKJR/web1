@@ -39,13 +39,14 @@ export class ListarAlunoComponent {
 
   alertaCofirmaRemoverAluno(nomeAluno: string): SweetAlertOptions {
     return {
-      title: `Você realmente deseja deletar o aluno ${nomeAluno}?`,
+      title: `Você realmente deseja remover o aluno ${nomeAluno}?`,
       text: 'Não será possível reverter essa ação.',
       icon: 'warning',
       showCancelButton: true,
+      cancelButtonText: 'Cancelar',
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
-      confirmButtonText: 'Sim, deletar!',
+      confirmButtonText: 'Sim, remover!',
     };
   }
 }
