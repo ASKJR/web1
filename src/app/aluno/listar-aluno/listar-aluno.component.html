@@ -69,7 +69,8 @@
               title="Remover"
               alt="Remover"
               class="btn btn-xs btn-danger"
-              (click)="removerAluno($event, aluno)"
+              [swal]="alertaCofirmaRemoverAluno(aluno.nome!)"
+              (confirm)="removerAluno(aluno)"
             >
               <i class="fa fa-times" aria-hidden="true"></i> Remover
             </button>

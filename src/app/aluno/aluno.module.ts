@@ -5,10 +5,16 @@ import { InserirEditarAlunoComponent } from './inserir-editar-aluno/inserir-edit
 import { AlunoService } from './services/aluno.service';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 
 @NgModule({
   declarations: [ListarAlunoComponent, InserirEditarAlunoComponent],
-  imports: [CommonModule, RouterModule, FormsModule],
+  imports: [
+    CommonModule,
+    RouterModule,
+    FormsModule,
+    SweetAlert2Module.forChild(),
+  ],
   providers: [AlunoService],
 })
 export class AlunoModule {}
