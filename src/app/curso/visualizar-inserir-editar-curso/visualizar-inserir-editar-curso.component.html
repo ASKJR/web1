@@ -11,6 +11,7 @@
         name="nome"
         minlength="2"
         required
+        placeholder="Digite o nome do curso..."
         [disabled]="isViewMode"
         [(ngModel)]="curso.nome"
         #nome="ngModel"
@@ -35,6 +36,7 @@
         name="link"
         minlength="2"
         required
+        placeholder="https://exemplo.curso.com.br/"
         [(ngModel)]="curso.link"
         [disabled]="isViewMode"
         #link="ngModel"

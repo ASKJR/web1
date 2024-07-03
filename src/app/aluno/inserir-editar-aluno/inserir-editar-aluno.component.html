@@ -14,6 +14,7 @@
         minlength="2"
         required
         [disabled]="isViewMode"
+        placeholder="Digite seu nome..."
         [(ngModel)]="aluno.nome"
         autocomplete="off"
         #nome="ngModel"
@@ -42,6 +43,7 @@
         required
         [(ngModel)]="aluno.cpf"
         (ngModelChange)="onCpfChange()"
+        placeholder="000.000.000-00"
         [disabled]="isViewMode || isEdit"
         autocomplete="off"
         #cpf="ngModel"
@@ -67,6 +69,7 @@
       <label for="nome">E-mail:</label>
       <input
         type="email"
+        placeholder="exemplo@domain.com"
         class="form-control"
         id="email"
         name="email"
