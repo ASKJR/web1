@@ -9,7 +9,7 @@
         class="form-control"
         id="nome"
         name="nome"
-        minlength="2"
+        minlength="5"
         required
         placeholder="Digite o nome do curso..."
         [disabled]="isViewMode"
@@ -22,7 +22,7 @@
       >
         <div [hidden]="!nome.errors['required']">Digite o nome da curso.</div>
         <div [hidden]="!nome.errors['minlength']">
-          O nome da curso deve conter ao menos 2 caracteres.
+          O nome da curso deve conter ao menos 5 caracteres.
         </div>
       </div>
     </div>
@@ -34,21 +34,23 @@
         class="form-control"
         id="link"
         name="link"
-        minlength="2"
+        minlength="10"
         required
-        placeholder="https://exemplo.curso.com.br/"
+        pattern="https?://.+"
+        placeholder="Digite uma URL válida (https://exemplo.com.br)"
         [(ngModel)]="curso.link"
         [disabled]="isViewMode"
         #link="ngModel"
       />
       <div
         class="alert alert-danger"
-        *ngIf="link.errors && (link.dirty || link.touched)"
+        *ngIf="(link.errors || link.invalid) && (link.dirty || link.touched)"
       >
-        <div [hidden]="!link.errors['required']">Digite o nome do link.</div>
-        <div [hidden]="!link.errors['minlength']">
-          O nome do link deve conter ao menos 2 caracteres.
+        <div [hidden]="!link.errors?.['required']">Digite o nome do link.</div>
+        <div [hidden]="!link.errors?.['minlength']">
+          O nome do link deve conter ao menos 10 caracteres.
         </div>
+        <div [hidden]="!link.errors?.['pattern']">URL inválida.</div>
       </div>
     </div>
     <br />

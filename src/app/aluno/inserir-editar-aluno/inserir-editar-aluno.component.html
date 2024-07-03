@@ -68,12 +68,13 @@
     <div class="form-group">
       <label for="nome">E-mail:</label>
       <input
-        type="email"
+        type="text"
         placeholder="exemplo@domain.com"
         class="form-control"
         id="email"
         name="email"
         required
+        email
         [(ngModel)]="aluno.email"
         [disabled]="isViewMode"
         autocomplete="off"
@@ -81,9 +82,14 @@
       />
       <div
         class="alert alert-danger"
-        *ngIf="email.errors && (email.dirty || email.touched)"
+        *ngIf="
+          (email.errors || email.invalid) && (email.dirty || email.touched)
+        "
       >
-        <div [hidden]="!email.errors['required']">Digite o email.</div>
+        <div [hidden]="!email.errors?.['required']">Digite o e-mail.</div>
+        <div [hidden]="!email.errors?.['email']">
+          Formato de e-mail inválido.
+        </div>
       </div>
     </div>
     <br />
