@@ -19,7 +19,6 @@ export class CursoService {
   }
 
   buscarPorId(id: number): Curso | undefined {
-    console.log(id);
     return this.listarTodos().find((p) => p.id === id);
   }
 

@@ -1,9 +1,23 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { alunoRoutes } from './shared/routes/aluno.route';
-import { cursoRoutes } from './shared/routes/curso.route';
 
-const routes: Routes = [...alunoRoutes, ...cursoRoutes];
+const routes: Routes = [
+  {
+    path: 'alunos',
+    loadChildren: () =>
+      import('../app/aluno/aluno.module').then((m) => m.AlunoModule),
+  },
+  {
+    path: 'cursos',
+    loadChildren: () =>
+      import('../app/curso/curso.module').then((m) => m.CursoModule),
+  },
+  {
+    path: '',
+    redirectTo: '',
+    pathMatch: 'full',
+  },
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

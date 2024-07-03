@@ -4,14 +4,14 @@ import { ListarAlunoComponent } from './listar-aluno/listar-aluno.component';
 import { InserirEditarAlunoComponent } from './inserir-editar-aluno/inserir-editar-aluno.component';
 import { AlunoService } from './services/aluno.service';
 import { FormsModule } from '@angular/forms';
-import { RouterModule } from '@angular/router';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
+import { AlunoRoutingModule } from './aluno-routing.module';
 
 @NgModule({
   declarations: [ListarAlunoComponent, InserirEditarAlunoComponent],
   imports: [
     CommonModule,
-    RouterModule,
+    AlunoRoutingModule,
     FormsModule,
     SweetAlert2Module.forChild(),
   ],

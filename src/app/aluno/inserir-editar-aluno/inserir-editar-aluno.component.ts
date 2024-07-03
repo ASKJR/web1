@@ -22,7 +22,6 @@ export class InserirEditarAlunoComponent {
   ) {}
   ngOnInit(): void {
     const idParam = this.activatedRoute.snapshot.params['id'];
-    console.log(this.router.url);
     if (idParam) {
       if (this.router.url.includes('visualizar')) {
         this.isViewMode = true;

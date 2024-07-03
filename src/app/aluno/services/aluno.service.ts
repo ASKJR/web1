@@ -20,7 +20,6 @@ export class AlunoService {
   }
 
   buscarPorId(id: number): Aluno | undefined {
-    console.log(id);
     return this.listarTodos().find((p) => p.id === id);
   }
 
