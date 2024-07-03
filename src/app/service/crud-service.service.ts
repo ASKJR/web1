@@ -1,16 +1,15 @@
-import { Injectable } from '@angular/core';
+import { Inject, Injectable } from '@angular/core';
 import { Iidentification } from '../shared/interfaces';
 import { ICrud } from '../shared/interfaces';
+import { localStorageKey } from '../shared/types';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CrudServiceService<T extends Iidentification> implements ICrud<T> {
   private LS_CHAVE = '';
-  constructor() {}
-  configurar(chave: string) {
-    console.log(chave);
-    this.LS_CHAVE = chave;
+  constructor(@Inject('chaveLocalStorage') chaveLocalStorage: localStorageKey) {
+    this.LS_CHAVE = chaveLocalStorage;
   }
   inserir(object: T): void {
     const objects = this.listarTodos();

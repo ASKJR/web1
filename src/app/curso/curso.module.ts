@@ -19,11 +19,7 @@ import { Curso } from '../shared/models/curso.model';
   providers: [
     {
       provide: CrudServiceService<Curso>,
-      useFactory: () => {
-        const service = new CrudServiceService<Curso>();
-        service.configurar('cursos');
-        return service;
-      },
+      useFactory: () => new CrudServiceService<Curso>('cursos'),
     },
   ],
 })

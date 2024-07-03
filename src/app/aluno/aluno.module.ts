@@ -19,11 +19,7 @@ import { Aluno } from '../shared/models/aluno.model';
   providers: [
     {
       provide: CrudServiceService<Aluno>,
-      useFactory: () => {
-        const service = new CrudServiceService<Aluno>();
-        service.configurar('alunos');
-        return service;
-      },
+      useFactory: () => new CrudServiceService<Aluno>('alunos'),
     },
   ],
 })
