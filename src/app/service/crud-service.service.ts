@@ -8,7 +8,10 @@ import { ICrud } from '../shared/interfaces';
 export class CrudServiceService<T extends Iidentification> implements ICrud<T> {
   private LS_CHAVE = '';
   constructor() {}
-
+  configurar(chave: string) {
+    console.log(chave);
+    this.LS_CHAVE = chave;
+  }
   inserir(object: T): void {
     const objects = this.listarTodos();
     object.id = new Date().getTime();

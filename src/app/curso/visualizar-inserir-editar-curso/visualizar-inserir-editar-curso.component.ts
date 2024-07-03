@@ -1,8 +1,8 @@
 import { Component, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Curso } from '../../shared/models/curso.model';
-import { CursoService } from '../services/curso.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { CrudServiceService } from '../../service/crud-service.service';
 
 @Component({
   selector: 'app-visualizar-inserir-editar-curso',
@@ -16,7 +16,7 @@ export class VisualizarInserirEditarCursoComponent {
   isViewMode: boolean = false;
 
   constructor(
-    private cursoService: CursoService,
+    private cursoService: CrudServiceService<Curso>,
     private router: Router,
     private activatedRoute: ActivatedRoute
   ) {}

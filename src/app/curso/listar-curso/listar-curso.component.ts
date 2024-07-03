@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Curso } from '../../shared/models/curso.model';
-import { CursoService } from '../services/curso.service';
 import Swal, { SweetAlertOptions } from 'sweetalert2';
+import { CrudServiceService } from '../../service/crud-service.service';
 
 @Component({
   selector: 'app-listar-curso',
@@ -9,7 +9,7 @@ import Swal, { SweetAlertOptions } from 'sweetalert2';
   styleUrl: './listar-curso.component.css',
 })
 export class ListarCursoComponent {
-  constructor(private cursoService: CursoService) {}
+  constructor(private cursoService: CrudServiceService<Curso>) {}
   cursos: Curso[] = [];
   ngOnInit(): void {
     this.cursos = this.listarTodos();

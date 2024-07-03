@@ -1,8 +1,8 @@
 import { Component, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Aluno } from '../../shared/models/aluno.model';
-import { AlunoService } from '../services/aluno.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { CrudServiceService } from '../../service/crud-service.service';
 
 @Component({
   selector: 'app-inserir-editar-aluno',
@@ -16,7 +16,7 @@ export class InserirEditarAlunoComponent {
   isViewMode: boolean = false;
 
   constructor(
-    private alunoService: AlunoService,
+    private alunoService: CrudServiceService<Aluno>,
     private router: Router,
     private activatedRoute: ActivatedRoute
   ) {}

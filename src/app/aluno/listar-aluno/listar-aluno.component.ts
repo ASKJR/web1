@@ -1,14 +1,14 @@
 import { Component } from '@angular/core';
-import { AlunoService } from '../services/aluno.service';
 import { Aluno } from '../../shared/models/aluno.model';
 import Swal, { SweetAlertOptions } from 'sweetalert2';
+import { CrudServiceService } from '../../service/crud-service.service';
 @Component({
   selector: 'app-listar-aluno',
   templateUrl: './listar-aluno.component.html',
   styleUrl: './listar-aluno.component.css',
 })
 export class ListarAlunoComponent {
-  constructor(private alunoService: AlunoService) {}
+  constructor(private alunoService: CrudServiceService<Aluno>) {}
   alunos: Aluno[] = [];
   ngOnInit(): void {
     this.alunos = this.listarTodos();
