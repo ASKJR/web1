@@ -52,6 +52,50 @@
     </div>
     <br />
     <div class="form-group">
+      <label for="nome">E-mail:</label>
+      <input
+        type="email"
+        class="form-control"
+        id="email"
+        name="email"
+        minlength="2"
+        required
+        [(ngModel)]="aluno.email"
+        [disabled]="isViewMode"
+        #email="ngModel"
+      />
+      <div
+        class="alert alert-danger"
+        *ngIf="email.errors && (email.dirty || email.touched)"
+      >
+        <div [hidden]="!email.errors['required']">Digite o email.</div>
+        <div [hidden]="!email.errors['minlength']">O email 2 caracteres.</div>
+      </div>
+    </div>
+    <br />
+    <div class="form-group">
+      <label for="nome">Data Nascimento:</label>
+      <input
+        type="date"
+        class="form-control"
+        id="nascimento"
+        name="nascimento"
+        required
+        [(ngModel)]="aluno.dataDeNascimento"
+        [disabled]="isViewMode"
+        #nascimento="ngModel"
+      />
+      <div
+        class="alert alert-danger"
+        *ngIf="nascimento.errors && (nascimento.dirty || nascimento.touched)"
+      >
+        <div [hidden]="!nascimento.errors['required']">
+          Digite a data de nascimento.
+        </div>
+      </div>
+    </div>
+    <br />
+    <div class="form-group">
       <div class="row gx-2 gy-2">
         <div class="col-auto">
           <button

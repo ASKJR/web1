@@ -29,11 +29,15 @@
     <tr>
       <th>Nome</th>
       <th>CPF</th>
+      <th>E-mail</th>
+      <th>Nascimento</th>
       <th>Ações</th>
     </tr>
     <tr *ngFor="let aluno of alunos">
       <td>{{ aluno.nome }}</td>
       <td>{{ aluno.cpf }}</td>
+      <td>{{ aluno.email }}</td>
+      <td>{{ aluno.dataDeNascimento }}</td>
       <td style="width: 350px">
         <div class="row gx-2 gy-2">
           <div class="col-auto">
