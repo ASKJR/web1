@@ -3,6 +3,7 @@ import { NgForm } from '@angular/forms';
 import { Aluno } from '../../shared/models/aluno.model';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CrudServiceService } from '../../service/crud-service.service';
+import { cpf } from 'cpf-cnpj-validator';
 
 @Component({
   selector: 'app-inserir-editar-aluno',
@@ -12,14 +13,19 @@ import { CrudServiceService } from '../../service/crud-service.service';
 export class InserirEditarAlunoComponent {
   @ViewChild('formAluno') formAluno!: NgForm;
   aluno: Aluno = new Aluno();
+  alunos: Aluno[] = [];
   isEdit: boolean = false;
   isViewMode: boolean = false;
+  isCpfValid: boolean = false;
+  isCpfDuplicated: boolean = false;
 
   constructor(
     private alunoService: CrudServiceService<Aluno>,
     private router: Router,
     private activatedRoute: ActivatedRoute
-  ) {}
+  ) {
+    this.alunos = alunoService.listarTodos();
+  }
   ngOnInit(): void {
     const idParam = this.activatedRoute.snapshot.params['id'];
     if (idParam) {
@@ -40,6 +46,14 @@ export class InserirEditarAlunoComponent {
       this.isViewMode = false;
     }
   }
+
+  onCpfChange() {
+    this.isCpfValid = cpf.isValid(this.aluno.cpf!);
+    this.isCpfDuplicated =
+      this.alunos.filter((a) => a.cpf === cpf.format(this.aluno.cpf!)).length >
+      0;
+  }
+
   handleClik(): void {
     if (this.isEdit) {
       this.editar();
@@ -47,14 +61,17 @@ export class InserirEditarAlunoComponent {
       this.inserir();
     }
   }
+
   inserir(): void {
-    if (this.formAluno.form.valid) {
+    if (this.formAluno.form.valid && this.isCpfValid && !this.isCpfDuplicated) {
+      this.aluno.cpf = cpf.format(this.aluno.cpf!);
       this.alunoService.inserir(this.aluno);
       this.router.navigate(['/alunos']);
     }
   }
   editar(): void {
-    if (this.formAluno.valid) {
+    if (this.formAluno.valid && this.isCpfValid) {
+      this.aluno.cpf = cpf.format(this.aluno.cpf!);
       this.alunoService.atualizar(this.aluno);
       this.router.navigate(['/alunos']);
     }

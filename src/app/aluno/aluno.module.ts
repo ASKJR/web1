@@ -7,6 +7,7 @@ import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import { AlunoRoutingModule } from './aluno-routing.module';
 import { CrudServiceService } from '../service/crud-service.service';
 import { Aluno } from '../shared/models/aluno.model';
+import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask';
 
 @NgModule({
   declarations: [ListarAlunoComponent, InserirEditarAlunoComponent],
@@ -15,12 +16,15 @@ import { Aluno } from '../shared/models/aluno.model';
     AlunoRoutingModule,
     FormsModule,
     SweetAlert2Module.forChild(),
+    NgxMaskDirective,
+    NgxMaskPipe,
   ],
   providers: [
     {
       provide: CrudServiceService<Aluno>,
       useFactory: () => new CrudServiceService<Aluno>('alunos'),
     },
+    provideNgxMask(),
   ],
 })
 export class AlunoModule {}

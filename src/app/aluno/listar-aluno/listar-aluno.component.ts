@@ -30,8 +30,8 @@ export class ListarAlunoComponent {
   removerAluno(aluno: Aluno) {
     this.alunoService.remover(aluno.id!);
     Swal.fire({
-      title: 'Removido!',
-      text: 'O aluno selecionando foi removido da base de dados.',
+      title: 'Removido(a)!',
+      text: 'O(A) aluno(a) selecionado(a) foi removido(a) da base de dados.',
       icon: 'success',
     });
     this.alunos = this.alunoService.listarTodos();
@@ -39,7 +39,7 @@ export class ListarAlunoComponent {
 
   alertaCofirmaRemoverAluno(nomeAluno: string): SweetAlertOptions {
     return {
-      title: `Você realmente deseja remover o aluno ${nomeAluno}?`,
+      title: `Você realmente deseja remover o(a) aluno(a) ${nomeAluno}?`,
       text: 'Não será possível reverter essa ação.',
       icon: 'warning',
       showCancelButton: true,
