@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { ListarAlunoComponent } from './listar-aluno/listar-aluno.component';
-import { InserirEditarAlunoComponent } from './inserir-editar-aluno/inserir-editar-aluno.component';
+import { VisualizarInserirEditarAlunoComponent } from './visualizar-inserir-editar-aluno/visualizar-inserir-editar-aluno.component';
 const routes: Routes = [
   {
     path: '',
@@ -13,15 +13,15 @@ const routes: Routes = [
   },
   {
     path: 'alunos/novo',
-    component: InserirEditarAlunoComponent,
+    component: VisualizarInserirEditarAlunoComponent,
   },
   {
     path: 'alunos/editar/:id',
-    component: InserirEditarAlunoComponent,
+    component: VisualizarInserirEditarAlunoComponent,
   },
   {
     path: 'alunos/visualizar/:id',
-    component: InserirEditarAlunoComponent,
+    component: VisualizarInserirEditarAlunoComponent,
   },
 ];
 @NgModule({

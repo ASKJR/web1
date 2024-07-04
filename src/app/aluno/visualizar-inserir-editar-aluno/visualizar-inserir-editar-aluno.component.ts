@@ -7,10 +7,10 @@ import { cpf } from 'cpf-cnpj-validator';
 import Swal from 'sweetalert2';
 
 @Component({
-  selector: 'app-inserir-editar-aluno',
-  templateUrl: './inserir-editar-aluno.component.html',
+  selector: 'app-visualizar-inserir-editar-aluno',
+  templateUrl: './visualizar-inserir-editar-aluno.component.html',
 })
-export class InserirEditarAlunoComponent {
+export class VisualizarInserirEditarAlunoComponent {
   @ViewChild('formAluno') formAluno!: NgForm;
   aluno: Aluno = new Aluno();
   alunos: Aluno[] = [];
