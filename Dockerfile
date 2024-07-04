@@ -13,7 +13,7 @@ RUN npm install -g @angular/cli
 COPY . .
 
 # Build the Angular project
-RUN ng build --prod
+RUN ng build --configuration production
 
 # Production environment
 FROM nginx:1.16.0-alpine
