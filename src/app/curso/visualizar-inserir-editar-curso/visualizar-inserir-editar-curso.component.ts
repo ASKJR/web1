@@ -52,7 +52,7 @@ export class VisualizarInserirEditarCursoComponent {
       this.cursoService.inserir(this.curso);
       Swal.fire({
         title: 'Sucesso',
-        text: 'O Curso foi criado da base de dados.',
+        text: 'O Curso foi criado na base de dados.',
         icon: 'success',
       });
       this.router.navigate(['/cursos']);

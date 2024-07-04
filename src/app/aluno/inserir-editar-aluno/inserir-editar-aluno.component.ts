@@ -68,7 +68,7 @@ export class InserirEditarAlunoComponent {
       this.alunoService.inserir(this.aluno);
       Swal.fire({
         title: 'Sucesso',
-        text: 'O(A) Aluno(a) foi criado(a) da base de dados.',
+        text: 'O(A) Aluno(a) foi criado(a) na base de dados.',
         icon: 'success',
       });
       this.router.navigate(['/alunos']);
