@@ -4,11 +4,11 @@ import { Aluno } from '../../shared/models/aluno.model';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CrudServiceService } from '../../service/crud-service.service';
 import { cpf } from 'cpf-cnpj-validator';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-inserir-editar-aluno',
   templateUrl: './inserir-editar-aluno.component.html',
-  styleUrl: './inserir-editar-aluno.component.css',
 })
 export class InserirEditarAlunoComponent {
   @ViewChild('formAluno') formAluno!: NgForm;
@@ -66,6 +66,11 @@ export class InserirEditarAlunoComponent {
     if (this.formAluno.form.valid && this.isCpfValid && !this.isCpfDuplicated) {
       this.aluno.cpf = cpf.format(this.aluno.cpf!);
       this.alunoService.inserir(this.aluno);
+      Swal.fire({
+        title: 'Sucesso',
+        text: 'O(A) Aluno(a) foi criado(a) da base de dados.',
+        icon: 'success',
+      });
       this.router.navigate(['/alunos']);
     }
   }
@@ -73,6 +78,11 @@ export class InserirEditarAlunoComponent {
     if (this.formAluno.valid && this.isCpfValid) {
       this.aluno.cpf = cpf.format(this.aluno.cpf!);
       this.alunoService.atualizar(this.aluno);
+      Swal.fire({
+        title: 'Sucesso',
+        text: 'Suas alterações foram salvas na base de dados.',
+        icon: 'success',
+      });
       this.router.navigate(['/alunos']);
     }
   }
