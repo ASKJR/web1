@@ -33,7 +33,12 @@ export class VisualizarInserirEditarCursoComponent {
       if (fetchedCurso !== undefined) {
         this.curso = fetchedCurso;
       } else {
-        throw new Error('Curso não encontrada: id=' + idParam);
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Curso não encontrado.',
+        });
+        this.router.navigate(['/cursos']);
       }
     } else {
       this.isEdit = false;

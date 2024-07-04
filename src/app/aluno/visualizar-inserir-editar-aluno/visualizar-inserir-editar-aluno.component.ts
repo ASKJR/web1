@@ -39,7 +39,12 @@ export class VisualizarInserirEditarAlunoComponent {
       if (fetchedAluno !== undefined) {
         this.aluno = fetchedAluno;
       } else {
-        throw new Error('Aluno não encontrada: id=' + idParam);
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Aluno(a) não encontrado.',
+        });
+        this.router.navigate(['/alunos']);
       }
     } else {
       this.isEdit = false;
